@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Mobile Tasks</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign in</string>
+    <string name="email">email</string>
+    <string name="phone_number">phone number</string>
+    <string name="name">name</string>
+    <string name="password">password</string>
+    <string name="back">Back</string>
+    <string name="sign_out">sign out</string>
+    <string name="welcome">Welcome</string>
+</resources>
