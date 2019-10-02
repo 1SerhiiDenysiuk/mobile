@@ -8,5 +8,14 @@
     <string name="password">password</string>
     <string name="back">Back</string>
     <string name="sign_out">sign out</string>
-    <string name="welcome">Welcome</string>
+    <string name="welcome">Welcome, </string>
+    <string name="empty_email_error">This field can`t be empty</string>
+    <string name="wrong_email">wrong email input</string>
+    <string name="empty_password_error">password can`t be empty</string>
+    <string name="short_password_error">need at least 8 symbols</string>
+    <string name="short_name_error">need at least 4 symbols</string>
+    <string name="wrong_phone_number">expect +380*********</string>
+    <string name="auth_failed">Authentication failed.</string>
+    <string name="used_email_error">that email is used</string>
+    <string name="wrong_email_or_password">incorrect email or password</string>
 </resources>

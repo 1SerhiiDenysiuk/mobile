@@ -11,10 +11,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    static final int passwordMinLength = 8;
     private EditText emailField;
     private EditText passwordField;
     private FirebaseAuth auth;
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,51 +30,69 @@ public class MainActivity extends AppCompatActivity {
             signIn(email, password);
         });
         findViewById(R.id.login_screen_sign_up_button).setOnClickListener(v -> {
-            final Intent sign_up = new Intent(this, SignUp.class);
-            startActivity(sign_up);
+            final Intent signUp = new Intent(this, SignUp.class);
+            startActivity(signUp);
             finish();
         });
     }
 
     private void signIn(final String email, final String password) {
-        if (emailField.getText().toString().trim().matches(emailPattern)) {
-            if (passwordField.getText().length() == 0) {
-                passwordField.setHint("password cant be empty");
-            } else {
-                auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(this, task -> {
-                            if (task.isSuccessful()) {
-                                onSignInSuccess();
-
-                            } else {
-                                onSignInFailure();
-                                passwordField.setText("");
-                            }
-
-                        });
-            }
-        } else {
-            emailField.setText("");
-            emailField.setHint("invalid email address");
+        if (validateEmail() && validatePassword()) {
+            auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            onSignInSuccess();
+                        } else {
+                            onSignInFailure();
+                        }
+                    });
         }
     }
 
     private void onSignInSuccess() {
-        final Intent sign_in = new Intent(this, HomePage.class);
+        final Intent signIn = new Intent(this, HomePage.class);
         String name = getIntent().getStringExtra("name");
-        sign_in.putExtra("name", name);
-        startActivity(sign_in);
+        signIn.putExtra("name", name);
+        startActivity(signIn);
         finish();
     }
 
     private void onSignInFailure() {
-        Toast.makeText(MainActivity.this, "incorrect email or password",
+        Toast.makeText(MainActivity.this, R.string.wrong_email_or_password,
                 Toast.LENGTH_LONG).show();
+        passwordField.setText("");
+        passwordField.setHint("password");
+    }
+
+    private boolean validateEmail() {
+        if (!emailField.getText().toString().trim().matches(emailPattern)) {
+            emailField.setText("");
+            emailField.setHint(R.string.wrong_email);
+            return false;
+        } else if (emailField.getText().toString().isEmpty()) {
+            emailField.setText("");
+            emailField.setHint(R.string.empty_email_error);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validatePassword() {
+        if (passwordField.length() < passwordMinLength) {
+            passwordField.setText("");
+            passwordField.setHint(R.string.short_password_error);
+            return false;
+        } else if (passwordField.getText().toString().isEmpty()) {
+            passwordField.setHint(R.string.empty_password_error);
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void onBackPressed() {
         moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
     }
 }
+
