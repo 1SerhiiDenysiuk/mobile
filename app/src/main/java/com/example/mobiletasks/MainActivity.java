@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
 
     private static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    static final int passwordMinLength = 8;
+    private static final int passwordMinLength = 8;
     private EditText emailField;
     private EditText passwordField;
     private FirebaseAuth auth;
@@ -61,17 +61,17 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, R.string.wrong_email_or_password,
                 Toast.LENGTH_LONG).show();
         passwordField.setText("");
-        passwordField.setHint("password");
+        passwordField.setHint("@string/password");
     }
 
     private boolean validateEmail() {
-        if (!emailField.getText().toString().trim().matches(emailPattern)) {
-            emailField.setText("");
-            emailField.setHint(R.string.wrong_email);
-            return false;
-        } else if (emailField.getText().toString().isEmpty()) {
+        if (emailField.getText().toString().isEmpty()) {
             emailField.setText("");
             emailField.setHint(R.string.empty_email_error);
+            return false;
+        } else if (!emailField.getText().toString().trim().matches(emailPattern)) {
+            emailField.setText("");
+            emailField.setHint(R.string.wrong_email);
             return false;
         } else {
             return true;
@@ -79,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean validatePassword() {
-        if (passwordField.length() < passwordMinLength) {
+        if (passwordField.getText().toString().isEmpty()) {
+            passwordField.setHint(R.string.empty_password_error);
+            return false;
+        } else if (passwordField.length() < passwordMinLength) {
             passwordField.setText("");
             passwordField.setHint(R.string.short_password_error);
-            return false;
-        } else if (passwordField.getText().toString().isEmpty()) {
-            passwordField.setHint(R.string.empty_password_error);
             return false;
         } else {
             return true;

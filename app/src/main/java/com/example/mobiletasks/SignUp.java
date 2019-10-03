@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -13,8 +15,8 @@ public class SignUp extends AppCompatActivity {
 
     private static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private static final String phoneNumberPattern = "[+3]+[8]+[0]+[0-9]{9,9}";
-    static final int passwordMinLength = 8;
-    static final int nameMinLength = 4;
+    private static final int passwordMinLength = 8;
+    private static final int nameMinLength = 4;
     private EditText editedEmail;
     private EditText editedPassword;
     private EditText editedName;
