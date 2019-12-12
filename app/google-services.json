@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "709322043431",
+    "firebase_url": "https://mobile-tasks-6f21f.firebaseio.com",
+    "project_id": "mobile-tasks-6f21f",
+    "storage_bucket": "mobile-tasks-6f21f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709322043431:android:3736d8ee6f44b57d4d9e02",
+        "android_client_info": {
+          "package_name": "com.example.mobiletasks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709322043431-f4tkberlrnct2m9537mis47tsmf3v4bk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-OAC-3aZ1Mi8r2Pt6bJYJDJ2GkQY2-_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709322043431-f4tkberlrnct2m9537mis47tsmf3v4bk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
