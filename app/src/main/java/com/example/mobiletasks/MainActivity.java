@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        auth = FirebaseAuth.getInstance();
+        auth = getApplicationEx().getAuth();
         emailField = findViewById(R.id.login_screen_email);
         passwordField = findViewById(R.id.login_screen_password);
         findViewById(R.id.login_screen_sign_in_button).setOnClickListener(v -> {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             final Intent signUp = new Intent(this, SignUp.class);
             startActivity(signUp);
             finish();
+
         });
     }
 
@@ -93,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onBackPressed() {
         moveTaskToBack(true);
+    }
+    private ApplicationEx getApplicationEx() {
+        return ((ApplicationEx) getApplication());
     }
 }
 

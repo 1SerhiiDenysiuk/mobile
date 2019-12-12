@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,12 +23,13 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         username = findViewById(R.id.logged_in_screen_message);
         auth = FirebaseAuth.getInstance();
-
+        Button nextBtn = findViewById(R.id.home_activity_nextBtn);
         findViewById(R.id.sign_out_button).setOnClickListener(v -> {
             final Intent signOut = new Intent(this, MainActivity.class);
             startActivity(signOut);
         });
         updateUI();
+        nextBtn.setOnClickListener(view -> startActivity(new Intent(HomePage.this, DataList.class)));
     }
 
     @SuppressLint("SetTextI18n")
@@ -44,4 +46,5 @@ public class HomePage extends AppCompatActivity {
     public void onBackPressed() {
         moveTaskToBack(true);
     }
+
 }
