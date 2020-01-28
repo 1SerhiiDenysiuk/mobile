@@ -28,7 +28,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        auth = FirebaseAuth.getInstance();
+        auth = getApplicationEx().getAuth();
         editedEmail = findViewById(R.id.create_email);
         editedPassword = findViewById(R.id.create_password);
         editedName = findViewById(R.id.create_user_name);
@@ -73,7 +73,8 @@ public class SignUp extends AppCompatActivity {
                     .setDisplayName(editedName.getText().toString()).build();
             user.updateProfile(profileChangeRequest).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    startActivity(new Intent(this, HomePage.class));
+                    startActivity(new Intent(SignUp.this,
+                            HomePage.class));;
                     finish();
                 } else {
                     Toast.makeText(SignUp.this, R.string.used_email_error,
@@ -132,5 +133,8 @@ public class SignUp extends AppCompatActivity {
 
     public void onBackPressed() {
         moveTaskToBack(true);
+    }
+    private ApplicationEx getApplicationEx() {
+        return ((ApplicationEx) getApplication());
     }
 }
