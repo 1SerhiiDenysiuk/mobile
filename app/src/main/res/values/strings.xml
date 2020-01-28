@@ -18,4 +18,19 @@
     <string name="auth_failed">Authentication failed.</string>
     <string name="used_email_error">that email is used</string>
     <string name="wrong_email_or_password">incorrect email or password</string>
+    <string name="next">Next</string>
+    <string name="equipment_type">Equipment type</string>
+    <string name="failure">Failed</string>
+    <string name="no_internet">no internet</string>
+    <string name="logout" type="id">sign_out_button</string>
+    <string name="tab2">Empty Page</string>
+    <string name="profile">Profile</string>
+    <string name="enter_new_email">Enter new email</string>
+    <string name="update">Update</string>
+    <string name="enter_new_username">Enter new username</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="image_uploaded">Image uploaded!</string>
+    <string name="username_updated">Username is updated!</string>
+    <string name="email_updated">Email is updated!</string>
+    <string name="error">Error</string>
 </resources>
