@@ -39,7 +39,7 @@ public class SignUp extends AppCompatActivity {
             signUpLogic(email, password);
         });
         findViewById(R.id.sign_in_button).setOnClickListener(v -> {
-            final Intent signIn = new Intent(this, MainActivity.class);
+            final Intent signIn = new Intent(this, SignIn.class);
             startActivity(signIn);
             finish();
         });
@@ -74,7 +74,7 @@ public class SignUp extends AppCompatActivity {
             user.updateProfile(profileChangeRequest).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     startActivity(new Intent(SignUp.this,
-                            HomePage.class));;
+                            MainActivity.class));;
                     finish();
                 } else {
                     Toast.makeText(SignUp.this, R.string.used_email_error,
